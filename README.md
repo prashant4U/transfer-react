@@ -2,7 +2,7 @@
 
 Simple, configurable Transfer Component built using react.
 
-This Component mainly focuses on Transfer of Items from left to right and vice versa provided with two lists and items from right lists are re-orderable by up and down direction respectively.
+This component mainly focuses on Transfer of Items from left to right and vice versa provided with two lists and items from right lists are re-orderable by up and down direction respectively.
 
 Features Provided:
 
@@ -10,7 +10,7 @@ Features Provided:
 2. Select items i.e. move items from right to left from right List
 3. Reorder selections i.e. items in right list only (move up and down)
 
-## For Execution On Local Machine Follow Below Commands
+## Execution Steps
 
 In the project directory, you have to install dependencies first:
 
@@ -24,10 +24,11 @@ after completing with dependencies In the project directory, you can run:
 npm start
 ```
 
-Runs the app in the development mode.<br />
+Runs the app in the development mode.
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-structure folders of the project look like this:
+Folders structure of this project:
 
 ```shell
 └──transfer-react
