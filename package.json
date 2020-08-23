@@ -13,7 +13,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "riteway -r @babel/register -r ignore-styles 'src/**/*.test.js' | tap-nirvana",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -30,5 +30,16 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/plugin-transform-runtime": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/register": "^7.10.5",
+    "@babel/runtime-corejs2": "^7.11.2",
+    "ignore-styles": "^5.0.1",
+    "riteway": "^6.1.2",
+    "tap-nirvana": "^1.1.0"
   }
 }

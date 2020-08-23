@@ -1,68 +1,117 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Transfer Component
 
-## Available Scripts
+Simple, configurable Transfer Component built using react.
 
-In the project directory, you can run:
+This Component mainly focuses on Transfer of Items from left to right and vice versa provided with two lists and items from right lists are re-orderable by up and down direction respectively.
 
-### `yarn start`
+Features Provided:
+
+1. Select items i.e. move items from left to right from left List
+2. Select items i.e. move items from right to left from right List
+3. Reorder selections i.e. items in right list only (move up and down)
+
+## For Execution On Local Machine Follow Below Commands
+
+In the project directory, you have to install dependencies first:
+
+```shell
+npm install
+```
+
+after completing with dependencies In the project directory, you can run:
+
+```shell
+npm start
+```
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+structure folders of the project look like this:
 
-### `yarn test`
+```shell
+└──transfer-react
+   ├── public
+   │     └── index.html
+   ├── src
+         ├── components
+         ├── css
+         └── test
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Example Usage
 
-### `yarn build`
+```js
+import React, { Component } from 'react'
+import '../css/styles.css'
+import Transfer from './components/Transfer'
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+// a example to test
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+const sourceData = []
+for (let i = 0; i < 10; i++) {
+  sourceData.push((i + 1).toString())
+}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+const targetData = []
+for (let i = 0; i < 10; i++) {
+  targetData.push((i + 11).toString())
+}
 
-### `yarn eject`
+const titles = ['Source', 'Target']
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <div className="container mb-4 mt-4">
+          <div className="row text-center justify-content-center mb-4 mt-4">
+            <h4 className="test-component"> {this.props.title} </h4>
+          </div>
+          <Transfer
+            sourceItems={sourceData}
+            targetItems={targetData}
+            titles={titles}
+          />
+        </div>
+      </div>
+    )
+  }
+}
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+export default App
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Props you can send
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## sourceItems
 
-## Learn More
+```js
+e.g const sourceData = ["Audi", "BMW", "Jaguar", "Mercedes" , "VW"]
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## targetItems
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```js
+e.g const targetData = ["Ferrari", "Ford", "GMC", "Lamborghini", "Toyota"]
+```
 
-### Code Splitting
+## titles
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+```js
+e.g const titles = ['Source', 'Target']
+```
 
-### Analyzing the Bundle Size
+## Note
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+you can also set only array elements for sourceItems and targetItems as [1,2,3,4,5,6..10] and [11,12,13,14,15,16..20] respectively, just in place of number you are now going to see Item1, Item2 and go on in the two list, and for titles the defaults labels are the `Source` and `Target`
 
-### Making a Progressive Web App
+## Unit Testing
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+have used `RITEway Testing Framework` for unit testing purpose, RITEway produces standard TAP output, so it's easy to integrate with just about any test formatter and reporting tool. (TAP is a well established standard with hundreds (thousands?) of integrations).
 
-### Advanced Configuration
+you can run test cases using below command
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```shell
+npm test
+```
