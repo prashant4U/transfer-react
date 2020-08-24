@@ -10,6 +10,10 @@ Features Provided:
 2. Select items i.e. move items from right to left from right List
 3. Reorder selections i.e. items in right list only (move up and down)
 
+## Demo
+
+See the demo at [https://transfer-react.vercel.app/](https://transfer-react.vercel.app/).
+
 ## Execution Steps
 
 In the project directory, you have to install dependencies first:
@@ -119,7 +123,7 @@ you can also set only array elements for sourceItems and targetItems as [1,2,3,4
 
 ## Unit Testing
 
-have used `RITEway Testing Framework` for unit testing purpose, RITEway produces standard TAP output, so it's easy to integrate with just about any test formatter and reporting tool. (TAP is a well established standard with hundreds (thousands?) of integrations).
+have used [RITEway Testing Framework](https://github.com/ericelliott/riteway) for unit testing purpose, RITEway produces standard TAP output, so it's easy to integrate with just about any test formatter and reporting tool. (TAP is a well established standard with hundreds (thousands?) of integrations).
 
 you can run test cases using below command
 
