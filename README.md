@@ -123,7 +123,7 @@ you can also set only array elements for sourceItems and targetItems as [1,2,3,4
 
 ## Unit Testing
 
-have used [RITEway Testing Framework](https://github.com/ericelliott/riteway) for unit testing purpose, RITEway produces standard TAP output, so it's easy to integrate with just about any test formatter and reporting tool. (TAP is a well established standard with hundreds (thousands?) of integrations).
+have configured and used [RITEway Testing Framework](https://github.com/ericelliott/riteway) for unit testing purpose, RITEway produces standard TAP output, so it's easy to integrate with just about any test formatter and reporting tool. (TAP is a well established standard with hundreds (thousands?) of integrations).
 
 you can run test cases using below command
 
