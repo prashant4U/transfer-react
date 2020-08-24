@@ -2,11 +2,13 @@ import React, { Component } from 'react'
 import '../css/styles.css'
 import Transfer from './Transfer'
 
+// by assuming am getting array of numbers or text, created dummy data for sourceItems i.e. ["1", "2"...]
 const sourceData = []
 for (let i = 0; i < 10; i++) {
   sourceData.push((i + 1).toString())
 }
 
+// by assuming am getting array of numbers or text, created dummy data for targetData i.e. ["11", "12"...]
 const targetData = []
 for (let i = 0; i < 10; i++) {
   targetData.push((i + 11).toString())

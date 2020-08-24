@@ -44,7 +44,7 @@ const Container = ({
           <div className="custom-control custom-checkbox">
             <CheckBox
               id={`checkbox_${title}`}
-              className="custom-control-input dt-checkboxes"
+              className="custom-control-input dt-checkboxes cursor"
               item={{
                 selected:
                   listItems.length > 0 &&
@@ -58,7 +58,7 @@ const Container = ({
             />
             <label
               id="custom-title"
-              className="custom-control-label"
+              className="custom-control-label cursor"
               htmlFor={`checkbox_${title}`}
             >
               {title}
