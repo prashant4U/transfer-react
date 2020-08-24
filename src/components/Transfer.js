@@ -122,7 +122,6 @@ class Transfer extends Component {
     console.log(moveUp)
     console.log(this.state.target)
     let targetList = Object.assign([], this.state.target)
-    let splicedList = Object.assign([], this.state.target)
     let selectedList = Object.assign([], this.state.target)
       .filter(element => element.selected === true)
       .sort(function(a, b) {
@@ -158,7 +157,7 @@ class Transfer extends Component {
         item => item.key === selectedItem.key
       )
       console.log('fromIndex', fromIndex)
-      let objectToMove = splicedList.splice(fromIndex, 1)[0]
+      let objectToMove = targetList.splice(fromIndex, 1)[0]
 
       console.log('objectToMove =>', objectToMove)
 
@@ -181,11 +180,11 @@ class Transfer extends Component {
         : 0
       // insert stored item into position `to`
       console.log('To INdex', toIndex)
-      splicedList.splice(toIndex, 0, objectToMove)
+      targetList.splice(toIndex, 0, objectToMove)
     })
 
     this.setState({
-      target: splicedList
+      target: targetList
     })
   }
 
