@@ -15,7 +15,7 @@ class ActionControls extends Component {
               }`}
               disabled={this.props.activateSourceAction ? '' : 'disabled'}
               onClick={() =>
-                this.props.handleUpDownEvents === 'true'
+                this.props.handleUpDownEvents
                   ? this.props.handleUpDownAction(true)
                   : this.props.handleTransferAction(true)
               }
@@ -35,7 +35,7 @@ class ActionControls extends Component {
               }`}
               disabled={this.props.activateTargetAction ? '' : 'disabled'}
               onClick={event =>
-                this.props.handleUpDownEvents === 'true'
+                this.props.handleUpDownEvents
                   ? this.props.handleUpDownAction(false)
                   : this.props.handleTransferAction(false)
               }

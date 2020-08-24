@@ -40,6 +40,16 @@ Folders structure of this project:
          └── test
 ```
 
+## When To Use
+
+It is a select control essentially which can be use for selecting multiple items.
+
+1. Transfer can display more information for items and take up more space.
+
+2. Transfer the elements between two columns in an intuitive and efficient way.
+
+One or more elements can be selected from either column, one click on the proper direction button, and the transfer is done. The left column is considered the source and the right column is considered the target.
+
 ## Example Usage
 
 ```js

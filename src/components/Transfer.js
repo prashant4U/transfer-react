@@ -22,7 +22,7 @@ class Transfer extends Component {
     let requiredStateCollection = []
     input.reduce((accumulator = {}, item, index) => {
       accumulator['key'] = listFlag ? index + 1 : input.length + index + 1
-      accumulator['title'] = `Content-` + item
+      accumulator['title'] = isNaN(item) ? item : `Item-` + item
       accumulator['isSource'] = listFlag
       accumulator['selected'] = false
       requiredStateCollection.push(accumulator)
@@ -121,18 +121,19 @@ class Transfer extends Component {
   handleUpDownAction = moveUp => {
     console.log(moveUp)
     console.log(this.state.target)
+    let targetList = Object.assign([], this.state.target)
+    let splicedList = Object.assign([], this.state.target)
     let selectedList = Object.assign([], this.state.target)
       .filter(element => element.selected === true)
       .sort(function(a, b) {
         return parseInt(a.key) - parseInt(b.key)
       })
-    console.log(selectedList)
     //return
     var groupedItem = [],
       temp = [],
       difference
     selectedList.forEach((selectedItem, index) => {
-      let originalIndex = this.state.target.findIndex(
+      let originalIndex = targetList.findIndex(
         item => item.key === selectedItem.key
       )
       if (difference !== originalIndex - index) {
@@ -152,34 +153,39 @@ class Transfer extends Component {
     console.log('groupedItem=>', groupedItem)
 
     //return
-    selectedList.forEach(selectedItem => {
-      let fromIndex = this.state.target.findIndex(
+    selectedList.forEach((selectedItem, index) => {
+      let fromIndex = targetList.findIndex(
         item => item.key === selectedItem.key
       )
-      console.log(fromIndex)
-      let objectToMove = this.state.target.splice(fromIndex, 1)[0]
+      console.log('fromIndex', fromIndex)
+      let objectToMove = splicedList.splice(fromIndex, 1)[0]
 
-      console.log(objectToMove)
+      console.log('objectToMove =>', objectToMove)
+
       let matchedArray = groupedItem.filter(item => {
         return item.some(selected => {
           return selectedItem.key === selected.key
         })
       })[0]
-      console.log(matchedArray)
+
+      console.log('To INdex with matchedArray', fromIndex - 1)
+
       let toIndex = moveUp
         ? fromIndex - matchedArray.length >= 0
-          ? fromIndex - matchedArray.length
-          : this.state.target.length
-        : fromIndex + matchedArray.length <= this.state.target.length
+          ? selectedList.length - 1 === targetList.length
+            ? index
+            : fromIndex - 1
+          : targetList.length
+        : fromIndex + matchedArray.length <= targetList.length
         ? fromIndex + matchedArray.length
         : 0
       // insert stored item into position `to`
       console.log('To INdex', toIndex)
-      this.state.target.splice(toIndex, 0, objectToMove)
+      splicedList.splice(toIndex, 0, objectToMove)
     })
 
     this.setState({
-      target: this.state.target
+      target: splicedList
     })
   }
 
@@ -194,7 +200,6 @@ class Transfer extends Component {
                 listItems={this.state.source}
                 title={(this.props.titles && this.props.titles[0]) || 'Source'}
                 checkBoxLabel="source"
-                selectedItems={this.state.selectedKeys}
                 handleOnChange={this.handleOnChange}
               />
               <ActionControls
@@ -208,9 +213,6 @@ class Transfer extends Component {
                   this.state.target.filter(item => item.selected === true)
                     .length > 0
                 }
-                targetItems={this.props.targetItems}
-                selectedItems={this.state.selectedKeys}
-                sourceItems={this.props.sourceItems}
                 handleTransferAction={this.handleTransferAction}
                 firstSVGString="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
                 secondSVGString="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
@@ -219,16 +221,12 @@ class Transfer extends Component {
                 listItems={this.state.target}
                 title={(this.props.titles && this.props.titles[1]) || 'Target'}
                 checkBoxLabel="target"
-                selectedKeys={this.state.selectedKeys}
                 handleOnChange={this.handleOnChange}
               />
               <ActionControls
                 firstActionIcon="bi bi-chevron-up"
                 secondActionIcon="bi bi-chevron-down"
-                sourceItems={this.state.source}
-                targetItems={this.state.target}
                 handleUpDownAction={this.handleUpDownAction}
-                targetSelectedItems={this.state.target}
                 activateSourceAction={
                   this.state.target.filter(item => item.selected === true)
                     .length > 0
@@ -239,7 +237,7 @@ class Transfer extends Component {
                 }
                 firstSVGString="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"
                 secondSVGString="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
-                handleUpDownEvents="true"
+                handleUpDownEvents={true}
               />
             </div>
           </div>

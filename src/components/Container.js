@@ -6,7 +6,6 @@ const Container = ({
   listItems = [],
   title,
   checkBoxLabel,
-  selectedItems,
   handleOnChange
 }) => {
   const renderedList = items => {
@@ -22,7 +21,6 @@ const Container = ({
                   id={`${checkBoxLabel}${item.key}`}
                   className="custom-control-input cursor"
                   item={item}
-                  selectedItems={selectedItems}
                   handleOnChange={handleOnChange}
                 />
                 <label
